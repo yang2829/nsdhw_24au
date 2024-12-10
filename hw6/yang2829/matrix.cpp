@@ -1,4 +1,6 @@
 #include "matrix.hpp"
+#include <pybind11/pybind11.h>
+#include <pybind11/operators.h>
 
 Matrix multiply_naive(Matrix const & mat1, Matrix const & mat2) {
     if (mat1.ncol() != mat2.nrow())
