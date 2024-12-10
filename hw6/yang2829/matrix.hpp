@@ -28,6 +28,15 @@ public:
             m_buffer[i] = m.m_buffer[i];
         }
     }
+    Matrix(Matrix && other) : m_nrow(other.m_nrow), m_ncol(other.m_ncol) {
+        if (m_buffer) delete[] m_buffer;
+        m_buffer = nullptr;
+        m_nrow = 0;
+        m_ncol = 0;
+        std::swap(m_nrow, other.m_nrow);
+        std::swap(m_ncol, other.m_ncol);
+        std::swap(m_buffer, other.m_buffer);
+    }
 
     ~Matrix() {
         if (m_buffer) { delete[] m_buffer; }
